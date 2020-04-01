@@ -1,0 +1,113 @@
+
+
+<header xmlns="http://www.w3.org/1999/html">
+
+  <img id="logo" src="../../assets/bilder/swisscom.png" >
+
+  <h3 id="titelschrift">Swisscom Reise-Calculator</h3>
+
+<app-navbar></app-navbar>
+
+</header>
+
+
+
+<div class="report">
+    <ul class="list-group">
+      <li class="list-group-item">Total Reisekosten
+        <p>{{sumOfCost}} CHF </p>
+      </li>
+      <li class="list-group-item">Kostenverhältnis zum GA
+        <p>{{gaRelations}} % </p></li>
+      <li class="list-group-item">Reisemonat
+        <select class="dropdown">
+          <option>Januar</option>
+          <option>Februar</option>
+          <option>März</option>
+          <option>April</option>
+          <option>Mai</option>
+          <option>Juni</option>
+          <option>Juli</option>
+          <option>August</option>
+          <option>September</option>
+          <option>Oktober</option>
+          <option>November</option>
+          <option>Dezember</option>
+        </select>
+      </li>
+    </ul>
+</div>
+
+
+
+<div class="container">
+    <div class="reise-input">
+      <h3 class="reisetitel">Reise erfassen</h3>
+      <div class="erfassen">
+        <tr>
+
+          <th>Ziel<br>
+            <select [(ngModel)]="reiseDetails.destination" [value]="value">
+              <option *ngFor="let ziel of zielort" [ngValue]="ziel">{{ziel.zielort}} </option>
+            </select>
+
+          <th>Preis<br>
+          <select [(ngModel)]="reiseDetails.preis" [value]="value">
+            <option class="form-control" *ngFor="let pr of zielort">{{pr.kosten + " CHF"}}</option>
+          </select>
+
+          <th>Datum<br>
+          <input id="datum" class="form-control" type="date" [(ngModel)]="reiseDetails.datum" placeholder="datum" [value]="value"></th>
+        </tr>
+    </div>
+
+      <div class="buttons">
+        <button type="button" class="btn btn-primary" (click)="enterReise()" >Erfassen</button>
+      </div>
+  </div>
+
+  <div class="auswerten">
+    <div class="table table--responsive">
+      <h3 class="table__title">Aktuelle Reisen </h3>
+      <div class="table__wrapper">
+        <table data-init="auto">
+          <thead>
+          <tr>
+            <th datatype="number">Nr</th>
+            <th datatype="text">Ziel</th>
+            <th datatype="number">Preis</th>
+            <th datatype="text">Datum</th>
+            <th datatype="text">Aktion</th>
+          </tr>
+          </thead>
+        <tbody>
+        <tr *ngFor="let reise of reisen">
+          <td>{{reise.id}}</td>
+          <td>{{reise.destination}}</td>
+          <td>{{reise.preis}}</td>
+          <td>{{reise.datum}}</td>
+
+    <td><button class="delete" (click)="deleteEmployee(reise.nr)">Delete</button></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    </div>
+  </div>
+
+
+  <div class="chart">
+
+<app-chart></app-chart>
+
+
+  </div>
+
+</div>
+
+<footer>
+Roberto Salerno
+</footer>
+
+
+
