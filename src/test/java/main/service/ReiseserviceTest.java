@@ -13,6 +13,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.hamcrest.MatcherAssert.assertThat;
+
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Optional;
@@ -41,8 +43,8 @@ public class ReiseserviceTest {
 
     @Before
     public void init(){
-        r1 = new Reise(1, "Bern", 120, "01.01.2020");
-        r2 = new Reise(2, "Olten", 90, "02.02.2023");
+        r1 = new Reise(1, "Bern", 120, java.sql.Date.valueOf("2020-11-15"));
+        r2 = new Reise(2, "Olten", 90, java.sql.Date.valueOf("2020-11-15"));
     }
 
    @Test

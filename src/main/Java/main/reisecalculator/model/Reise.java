@@ -17,12 +17,11 @@ public class Reise {
     private int id;
     private String destination;
     private int preis;
-    private String datum;
-
+    private java.sql.Date datum;
 
     public Reise(){}
 
-    public Reise(int id, String destination,int preis,  String datum) {
+    public Reise(int id, String destination, int preis,  java.sql.Date datum) {
         this.id = id;
         this.destination = destination;
         this.preis = preis;
@@ -51,7 +50,7 @@ public class Reise {
     }
 
     @Column(name = "datum", nullable = false)
-    public String getDatum() {
+    public java.sql.Date getDatum() {
         return datum;
     }
 
@@ -64,7 +63,7 @@ public class Reise {
         this.preis = preis;
     }
 
-    public void setDatum(String datum) {
+    public void setDatum(java.sql.Date datum) {
         this.datum = datum;
     }
 

@@ -18,7 +18,9 @@ import org.junit.jupiter.api.extension.ExtendWith;
         import org.springframework.http.HttpStatus;
         import org.springframework.http.ResponseEntity;
         import static org.hamcrest.MatcherAssert.assertThat;
-        import java.util.Arrays;
+
+import java.time.LocalDate;
+import java.util.Arrays;
         import java.util.Collections;
         import java.util.Optional;
         import static org.hamcrest.Matchers.*;
@@ -47,9 +49,9 @@ public class ControllerTest {
 
     @Before
     public void init(){
-        reise1 = new Reise( 1, "Bern", 120, "01.01.2020");
-        reise2 = new Reise(2, "Chur", 30, "02.02.2022");
-        reise3 = new Reise(2, "Arosa", 99, "03.03.2033");
+        reise1 = new Reise( 1, "Bern", 120, java.sql.Date.valueOf("2020-11-15"));
+        reise2 = new Reise(2, "Chur", 30, java.sql.Date.valueOf("2020-11-15"));
+        reise3 = new Reise(2, "Arosa", 99, java.sql.Date.valueOf("2020-11-15"));
     }
 
 
@@ -116,8 +118,8 @@ public class ControllerTest {
 
     @Test
     public void update_WhenFound(){
-        Reise reise1 = new Reise( 1, "Bern", 120, "01.01.2020");
-        Reise reise3 = new Reise( 2, "Bern", 120, "01.01.2020");
+        Reise reise1 = new Reise( 1, "Bern", 120, java.sql.Date.valueOf("2020-11-15"));
+        Reise reise3 = new Reise( 2, "Bern", 120, java.sql.Date.valueOf("2020-11-15"));
         when(reiseservice.findById(1)).thenReturn(Optional.ofNullable(reise1));
         when(reiseservice.createOrUpdate(reise1)).thenReturn(reise3);
         assertThat(reiseController.update(1, reise3).getBody().getDestination(), is("Bern"));

@@ -5,11 +5,9 @@ import main.reisecalculator.model.Reise;
 import main.reisecalculator.repository.DestinationRepository;
 import main.reisecalculator.service.Reiseservice;
 import lombok.extern.slf4j.Slf4j;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
@@ -36,7 +34,7 @@ class ReiseController {
        return reiseservice.findAll();
     }
 
-    @GetMapping("/reisen/{id}")
+    @GetMapping("/reisen/id/{id}")
     public ResponseEntity<Reise> findById(@PathVariable Integer id){
 
         Optional<Reise> r = reiseservice.findById(id);
@@ -46,20 +44,26 @@ class ReiseController {
         return ResponseEntity.ok(r.get());
     }
 
-    @GetMapping("/reisen/v1")
+ /*   @GetMapping("/reisen/v1")
     public ResponseEntity<String> getReiseKosten(){
         return ResponseEntity.ok(String.valueOf(reiseservice.reiseTotal()));
-    }
+    }*/
 
-    @GetMapping("/reisen/v2")
+   /* @GetMapping("/reisen/v2")
     public int getGAVerhaeltnis() {
         return this.reiseservice.gaRelation();
     }
-
+*/
 
     @GetMapping("/reisen/destinations")
     public List<City> getAllDestinations(){
         return destinationRepository.findAll();
+    }
+
+
+    @GetMapping("/reisen/ort/{ort}")
+    public List<Reise> findByDestination(@PathVariable String ort){
+        return reiseservice.findByDestination(ort);
     }
 
     @PostMapping("/reisen")

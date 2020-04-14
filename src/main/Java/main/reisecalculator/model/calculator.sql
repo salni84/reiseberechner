@@ -7,7 +7,7 @@ CREATE table if not exists calculator.reise
     id int not null AUTO_INCREMENT primary key,
     destination VARCHAR(50),
     preis int,
-    datum VARCHAR(50)
+    datum Date
 );
 
 
