@@ -18,9 +18,3 @@ public interface ReiseRepository extends JpaRepository<Reise, Integer> {
 
     List<Reise> findByDestination(String destination);
 }
-
-
-
-
-
-

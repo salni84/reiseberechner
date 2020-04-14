@@ -20,7 +20,6 @@ public
 class ReiseController {
 
 
-
     @Autowired
     private Reiseservice reiseservice;
 

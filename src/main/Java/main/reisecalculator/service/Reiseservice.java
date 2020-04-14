@@ -11,6 +11,7 @@ import java.util.Optional;
 @Service
 public class Reiseservice {
 
+
     private static double gaPreis = 5265;
 
     @Autowired
