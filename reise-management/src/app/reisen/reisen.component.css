@@ -4,7 +4,6 @@
 @media screen and (min-width: 920px){
   .report {
     max-width: 20%;
-
     float: left;
   }
 
@@ -13,6 +12,18 @@
 }
 }
 
+
+.dropdown {
+  width: auto !important;
+  height: 50px !important;
+  margin-right: 10px;
+  border-style: solid;
+  border-color: black;
+}
+
+.form-control {
+  height: 50px;
+}
 
 nav {
   float: right;
@@ -48,7 +59,6 @@ thead {
   font-size: 16px;
 }
 
-
 h3 {
   color: white;
 }
@@ -58,17 +68,15 @@ h3 {
   color: black;
 }
 
-
 .reisetitel {
   color: black;
   margin-bottom: 20px;
+  text-align: center;
 }
-
 
 .container {
   background-color: #F8FAFB;
 }
-
 
 .buttons {
   margin-top: 10px;
@@ -80,15 +88,12 @@ input {
   background-color: white;
 }
 
-
 #logo {
   max-width: 10%;
   height: auto;
   padding: 1%;
   float: left;
-
 }
-
 
 footer {
   background-color: black;
@@ -99,4 +104,26 @@ footer {
 table {
   min-width: 60vw;
   margin: 2%;
+}
+
+#addButton{
+  margin-bottom: 5%;
+  margin-left: 10px;
+}
+
+.erfassen{
+ background-color: red;
+  justify-content: center;
+  padding: 3%;
+  display: flex;
+}
+
+th{
+  color: black;
+}
+
+
+.input {
+  display: flex;
+  flex-wrap: wrap;
 }

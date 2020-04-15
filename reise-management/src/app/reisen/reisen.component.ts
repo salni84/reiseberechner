@@ -17,6 +17,9 @@ import {Destination} from "../Destination";
 
   reisen: Reise[];
 
+  gaPreis = 5265;
+  gaVerh = 0;
+
   sumOfCost: number;
 
   gaRelations: number;
@@ -35,9 +38,7 @@ import {Destination} from "../Destination";
   constructor(private httpClientService:HttpClientService) {}
 
   ngOnInit() {
-    this.httpClientService.getTrip().subscribe(response =>this.handleSuccessfulResponse(response));
-    this.httpClientService.getReiseTotal().subscribe(data => this.sumOfCost = data);
-    this.httpClientService.gaRelation().subscribe(data => this.gaRelations = data);
+    this.httpClientService.getTrip().subscribe(response =>this.reisen = response);
     this.httpClientService.getDestination().subscribe(res => this.zielort = res);
   }
 
@@ -60,6 +61,10 @@ import {Destination} from "../Destination";
       console.log(reiseDetails), error => console.log(error));
     this.reiseDetails = new Reise();
    window.location.reload();
+  }
+
+  deleteFilter(){
+    this.httpClientService.getTrip().subscribe(response =>this.reisen = response);
   }
 
   deleteTrip(id: number) {
@@ -89,5 +94,11 @@ import {Destination} from "../Destination";
 
   getDestinationFiltered(destination:any){
     this.httpClientService.getTripByDestination(destination).subscribe(data => this.reisen = data)
+  }
+
+
+  gaRelation():string{
+   this.gaVerh = (this.getSum()*100/this.gaPreis)-100;
+   return this.gaVerh.toFixed(2)
   }
 }

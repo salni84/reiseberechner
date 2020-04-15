@@ -31,10 +31,6 @@ export class HttpClientService {
     return this.http.get<Reise>(this.apiURL + '/reisen/' + id )
   }
 
-  getReiseTotal(): Observable<number> {
-    return this.http.get<number>(this.apiURL + '/reisen/v1')
-  }
-
   getTripByDestination(destination:String){
     return this.http.get<Reise[]>(this.apiURL + '/reisen/ort/' + destination)
   }
@@ -68,10 +64,6 @@ export class HttpClientService {
       );
   }
 
-
-  gaRelation(): Observable<number> {
-    return this.http.get<number>(this.apiURL + '/reisen/v2')
-  }
 
   getDestination(): Observable<Destination[]> {
     return this.http.get<Destination[]>(this.apiURL + '/reisen/destinations')

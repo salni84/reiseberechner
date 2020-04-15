@@ -43,17 +43,6 @@ class ReiseController {
         return ResponseEntity.ok(r.get());
     }
 
- /*   @GetMapping("/reisen/v1")
-    public ResponseEntity<String> getReiseKosten(){
-        return ResponseEntity.ok(String.valueOf(reiseservice.reiseTotal()));
-    }*/
-
-   /* @GetMapping("/reisen/v2")
-    public int getGAVerhaeltnis() {
-        return this.reiseservice.gaRelation();
-    }
-*/
-
     @GetMapping("/reisen/destinations")
     public List<City> getAllDestinations(){
         return destinationRepository.findAll();
