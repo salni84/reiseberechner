@@ -1,8 +1,8 @@
-import {Component, DoCheck, OnChanges, OnInit, Pipe} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { HttpClientService } from '../service/http-client.service';
 import {Reise} from "../Reise";
 import {Destination} from "../Destination";
-import {element} from "protractor";
+
 
 
 @Component({
