@@ -1,0 +1,8 @@
+main/reisecalculator/model/ValidationError.class
+main/reisecalculator/repository/ReiseRepository.class
+main/reisecalculator/model/City.class
+main/Application.class
+main/reisecalculator/service/Reiseservice.class
+main/reisecalculator/repository/DestinationRepository.class
+main/reisecalculator/model/Reise.class
+main/reisecalculator/controller/ReiseController.class

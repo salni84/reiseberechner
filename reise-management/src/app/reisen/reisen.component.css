@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
+
 
 @media screen and (min-width: 920px){
   .report {
@@ -10,6 +12,7 @@
   max-width: 70%;
 }
 }
+
 
 nav {
   float: right;
@@ -25,69 +28,47 @@ a {
 }
 
 #titelschrift {
- text-align: left;
- padding: 1%;
+  text-align: center;
+  padding: 1%;
+  font-size: 3em;
+  padding-top: 40px;
 }
 
 header {
   background-color: red;
-
-  margin-bottom: 5%;
-
+  height: 160px;
+  font-family: 'Abril Fatface', cursive;
 }
 
-#destination{
-  padding-right: 10px;
+thead {
+  min-width: 100px;
 }
 
-
-h1 h2 h3 button {
-  font-family: "TheSans Swisscom";
+.report {
+  font-size: 16px;
 }
+
 
 h3 {
   color: white;
 }
 
 .table__title {
-  padding-left: 0px;
-
+  padding-left: 0;
+  color: black;
 }
+
 
 .reisetitel {
   color: black;
   margin-bottom: 20px;
 }
 
-select {
-  max-width: 30vw ;
-}
-
-
-
-#datum {
-  max-width: 30vw;
-  height: 48px;
-  border: 1px solid #bbb;
-}
-
-.auswerten {
-  margin-top: 5vh;
-}
-
-th {
-  max-width: 30vw;
-}
-
 
 .container {
   background-color: #F8FAFB;
-
 }
 
-.reise-input {
-  margin-bottom: 2px;
-}
 
 .buttons {
   margin-top: 10px;
@@ -101,14 +82,13 @@ input {
 
 
 #logo {
-  max-width: 50px;
-  max-height: 50px;
+  max-width: 10%;
+  height: auto;
+  padding: 1%;
+  float: left;
+
 }
 
-
-.accordion__toggle {
-  width: 100%;
-}
 
 footer {
   background-color: black;
@@ -116,10 +96,7 @@ footer {
   color: white;
 }
 
-.table__title{
-  color: black;
-}
-
-#logo {
-  padding: 1%;
+table {
+  min-width: 60vw;
+  margin: 2%;
 }

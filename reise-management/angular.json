@@ -24,13 +24,12 @@
               "src/assets"
             ],
             "styles": [
-              "./node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css",
-              "./node_modules/@swisscom/sdx/dist/css/sdx.min.css",
-              "./node_modules/bootstrap/dist/css/bootstrap.min.css"
+
+
             ],
             "scripts": [
-
             ]
           },
           "configurations": {

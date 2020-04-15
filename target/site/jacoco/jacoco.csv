@@ -1,0 +1,7 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+SpringRest,main.reisecalculator.service,Reiseservice,51,0,0,0,12,0,8,0,8,0
+SpringRest,main.reisecalculator.controller,ReiseController,103,0,6,0,23,0,13,0,10,0
+SpringRest,main.reisecalculator.model,City,17,0,0,0,7,0,5,0,5,0
+SpringRest,main.reisecalculator.model,ValidationError,4,0,0,0,2,0,1,0,1,0
+SpringRest,main.reisecalculator.model,Reise,43,0,0,0,18,0,9,0,9,0
+SpringRest,main,Application,8,0,0,0,3,0,2,0,2,0

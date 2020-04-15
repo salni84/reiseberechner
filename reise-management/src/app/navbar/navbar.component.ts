@@ -6,5 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent  {
+ isCollapesd: boolean;
 
+ constructor(){
+   this.isCollapesd = true;
+ }
 }

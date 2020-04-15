@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="de"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ReiseController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">SpringRest</a> &gt; <a href="index.source.html" class="el_package">main.reisecalculator.controller</a> &gt; <span class="el_source">ReiseController.java</span></div><h1>ReiseController.java</h1><pre class="source lang-java linenums">package main.reisecalculator.controller;
+
+import main.reisecalculator.model.City;
+import main.reisecalculator.model.Reise;
+import main.reisecalculator.repository.DestinationRepository;
+import main.reisecalculator.service.Reiseservice;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import javax.validation.Valid;
+import java.util.List;
+import java.util.Optional;
+
+
+@CrossOrigin(origins = &quot;http://localhost:4200&quot;)
+@RestController
+<span class="nc" id="L18">@Slf4j</span>
+public
+<span class="nc" id="L20">class ReiseController {</span>
+
+
+
+    @Autowired
+    private Reiseservice reiseservice;
+
+    @Autowired
+    private DestinationRepository destinationRepository;
+
+
+
+    @GetMapping(&quot;/reisen&quot;)
+    public List&lt;Reise&gt; findAll() {
+<span class="nc" id="L34">       return reiseservice.findAll();</span>
+    }
+
+    @GetMapping(&quot;/reisen/{id}&quot;)
+    public ResponseEntity&lt;Reise&gt; findById(@PathVariable Integer id){
+
+<span class="nc" id="L40">        Optional&lt;Reise&gt; r = reiseservice.findById(id);</span>
+<span class="nc bnc" id="L41" title="All 2 branches missed.">        if (!r.isPresent()){</span>
+<span class="nc" id="L42">            return ResponseEntity.notFound().build();</span>
+        }
+<span class="nc" id="L44">        return ResponseEntity.ok(r.get());</span>
+    }
+
+    @GetMapping(&quot;/reisen/v1&quot;)
+    public ResponseEntity&lt;String&gt; getReiseKosten(){
+<span class="nc" id="L49">        return ResponseEntity.ok(String.valueOf(reiseservice.reiseTotal()));</span>
+    }
+
+    @GetMapping(&quot;/reisen/v2&quot;)
+    public int getGAVerhaeltnis() {
+<span class="nc" id="L54">        return this.reiseservice.gaRelation();</span>
+    }
+
+
+    @GetMapping(&quot;/reisen/destinations&quot;)
+    public List&lt;City&gt; getAllDestinations(){
+<span class="nc" id="L60">        return destinationRepository.findAll();</span>
+    }
+
+    @PostMapping(&quot;/reisen&quot;)
+    public ResponseEntity&lt;Reise&gt; createTrip(@Valid @RequestBody Reise reise){
+<span class="nc" id="L65">        return ResponseEntity.ok(reiseservice.createOrUpdate(reise));</span>
+    }
+
+    @DeleteMapping(&quot;reisen/{id}&quot;)
+    public ResponseEntity delete(@PathVariable int id){
+<span class="nc" id="L70">        Optional&lt;Reise&gt; p = reiseservice.findById(id);</span>
+
+<span class="nc bnc" id="L72" title="All 2 branches missed.">        if (!p.isPresent()) {</span>
+            //log.error(&quot;Product with id &quot; + id + &quot; does not exist.&quot;);
+<span class="nc" id="L74">            return ResponseEntity.notFound().build();</span>
+        }
+<span class="nc" id="L76">        reiseservice.deleteById(id);</span>
+<span class="nc" id="L77">        return ResponseEntity.ok().build();</span>
+    }
+
+    @PutMapping(&quot;reisen/{id}&quot;)
+    public ResponseEntity&lt;Reise&gt; update (@PathVariable int id, @Valid @RequestBody Reise reise){
+<span class="nc" id="L82">        Optional&lt;Reise&gt; p = reiseservice.findById(id);</span>
+
+<span class="nc bnc" id="L84" title="All 2 branches missed.">        if (!p.isPresent()) {</span>
+            //log.error(&quot;Product with id &quot; + id + &quot; does not exist.&quot;);
+<span class="nc" id="L86">            return ResponseEntity.notFound().build();</span>
+        }
+
+<span class="nc" id="L89">        p.get().setDestination(reise.getDestination());</span>
+<span class="nc" id="L90">        p.get().setDatum(reise.getDatum());</span>
+<span class="nc" id="L91">        p.get().setPreis(reise.getPreis());</span>
+
+<span class="nc" id="L93">        return ResponseEntity.ok(reiseservice.createOrUpdate(p.get()));</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

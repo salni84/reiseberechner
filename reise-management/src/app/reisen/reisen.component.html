@@ -1,63 +1,55 @@
 
-
 <header xmlns="http://www.w3.org/1999/html">
 
-  <img id="logo" src="../../assets/bilder/swisscom.png" >
+  <img id="logo" src="" alt="logo">
 
   <h3 id="titelschrift">Swisscom Reise-Calculator</h3>
 
-<app-navbar></app-navbar>
-
 </header>
 
-
+<app-navbar></app-navbar>
 
 <div class="report">
     <ul class="list-group">
       <li class="list-group-item">Total Reisekosten
-        <p>{{sumOfCost}} CHF </p>
+        <p>{{getSum()}} CHF </p>
       </li>
       <li class="list-group-item">Kostenverhältnis zum GA
         <p>{{gaRelations}} % </p></li>
-      <li class="list-group-item">Reisemonat
-        <select class="dropdown">
-          <option>Januar</option>
-          <option>Februar</option>
-          <option>März</option>
-          <option>April</option>
-          <option>Mai</option>
-          <option>Juni</option>
-          <option>Juli</option>
-          <option>August</option>
-          <option>September</option>
-          <option>Oktober</option>
-          <option>November</option>
-          <option>Dezember</option>
-        </select>
+   <!--   <li class="list-group-item">Reisefilter
+        <input [(ngModel)]="filteredString" (ngModelChange)="getSelectedDropdown()" />
+      </li>-->
+      <li class="list-group-item">Reiseziel-Filter
+        <label>
+          <select [(ngModel)]="filteredDestination" (change)="getDestinationFiltered(filteredDestination)">
+            <option ngModel="" *ngFor="let ziel of zielort" [ngValue]="ziel.zielort">{{ziel.zielort}}  </option>
+          </select>
+        </label>
       </li>
     </ul>
 </div>
-
-
 
 <div class="container">
     <div class="reise-input">
       <h3 class="reisetitel">Reise erfassen</h3>
       <div class="erfassen">
         <tr>
-
           <th>Ziel<br>
-            <select [(ngModel)]="reiseDetails.destination" [value]="value">
-              <option *ngFor="let ziel of zielort" [ngValue]="ziel">{{ziel.zielort}} </option>
-            </select>
+            <label>
+              <select [(ngModel)]="reiseDetails.destination">
+                <option *ngFor="let ziel of zielort" [ngValue]="ziel.zielort">{{ziel.zielort}} </option>
+              </select>
+            </label>
 
           <th>Preis<br>
-          <select [(ngModel)]="reiseDetails.preis" [value]="value">
-            <option class="form-control" *ngFor="let pr of zielort">{{pr.kosten + " CHF"}}</option>
-          </select>
+            <label>
+              <select [(ngModel)]="reiseDetails.preis" >
+               <option  *ngFor="let pr of zielort" [ngValue]="pr.kosten">{{pr.kosten + " CHF"}}</option>
+            </select>
+            </label>
 
           <th>Datum<br>
-          <input id="datum" class="form-control" type="date" [(ngModel)]="reiseDetails.datum" placeholder="datum" [value]="value"></th>
+            <label for="datum"></label><input id="datum" class="form-control" type="date" [(ngModel)]="reiseDetails.datum" placeholder="datum"></th>
         </tr>
     </div>
 
@@ -66,34 +58,43 @@
       </div>
   </div>
 
-  <div class="auswerten">
-    <div class="table table--responsive">
-      <h3 class="table__title">Aktuelle Reisen </h3>
-      <div class="table__wrapper">
-        <table data-init="auto">
-          <thead>
-          <tr>
-            <th datatype="number">Nr</th>
-            <th datatype="text">Ziel</th>
-            <th datatype="number">Preis</th>
-            <th datatype="text">Datum</th>
-            <th datatype="text">Aktion</th>
-          </tr>
-          </thead>
-        <tbody>
-        <tr *ngFor="let reise of reisen">
-          <td>{{reise.id}}</td>
-          <td>{{reise.destination}}</td>
-          <td>{{reise.preis}}</td>
-          <td>{{reise.datum}}</td>
+  <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
+    <ngb-panel title="Simple">
+      <ng-template ngbPanelContent>
+        <div class="auswerten">
+          <div class="table table-striped table--responsive">
+            <h3 class="table__title">Aktuelle Reisen</h3>
+            <div class="table__wrapper">
+              <table data-init="">
+                <thead>
+                <tr>
+                  <th datatype="number">Nr</th>
+                  <th datatype="text">Ziel</th>
+                  <th datatype="number">Preis</th>
+                  <th datatype="text">Datum</th>
+                  <th datatype="text">Aktion</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let reise of reisen">
+                  <td>{{reise.id}}</td>
+                  <td>{{reise.destination}}</td>
+                  <td>{{reise.preis + ".-"}}</td>
+                  <td>{{reise.datum | date}}</td>
 
-    <td><button class="delete" (click)="deleteEmployee(reise.nr)">Delete</button></td>
-        </tr>
-        </tbody>
-      </table>
-    </div>
-    </div>
-  </div>
+                  <td><button class="delete" (click)="deleteTrip(reise.id)">Delete</button></td>
+                </tr>
+
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+
+      </ng-template>
+    </ngb-panel>
+  </ngb-accordion>
 
 
   <div class="chart">

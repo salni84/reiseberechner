@@ -9,8 +9,9 @@ import { NgApexchartsModule } from "ng-apexcharts";
 import { NavbarComponent } from './navbar/navbar.component';
 import { SbbPageComponent } from './sbb-page/sbb-page.component';
 import { AppRoutingModule } from "./app-routing.module";
-import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgbModule} from "@ng-bootstrap/ng-bootstrap";
+
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     Reisen,
     ChartComponent,
     NavbarComponent,
-    SbbPageComponent
+    SbbPageComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -27,11 +29,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormsModule,
     NgApexchartsModule,
     AppRoutingModule,
-    AccordionModule.forRoot(),
-    BrowserAnimationsModule
-
-
+    BrowserAnimationsModule,
+    NgbModule
   ],
+
+
   providers: [],
   bootstrap: [AppComponent]
 })

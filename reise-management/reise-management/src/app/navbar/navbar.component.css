@@ -1,0 +1,22 @@
+
+
+.navigation {
+  background-color: #bbbbbb;
+
+}
+
+
+a {
+  color: white;
+  font-weight: bold;
+}
+
+
+#navi {
+  float: left;
+}
+
+li {
+  float: left;
+  color: white;
+}

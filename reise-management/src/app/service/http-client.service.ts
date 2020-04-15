@@ -4,6 +4,7 @@ import {Reisen} from "../reisen/reisen.component";
 import {Observable, throwError} from "rxjs";
 import {catchError, retry} from "rxjs/operators";
 import {Reise} from "../Reise";
+import {Destination} from "../Destination";
 
 
 @Injectable({
@@ -13,7 +14,7 @@ export class HttpClientService {
 
   constructor(private http:HttpClient) {}
 
-  apiURL = 'http://localhost:9000';
+  apiURL = 'http://localhost:8080';
 
 
   httpOptions = {
@@ -22,16 +23,24 @@ export class HttpClientService {
     })
   };
 
-  getTrip(): Observable<Reise[]>{
+  getTrip(monat?:String): Observable<Reise[]>{
       return this.http.get<Reise[]>(this.apiURL + '/reisen');
+  }
+
+  getTripById(id: number): Observable<Reise>{
+    return this.http.get<Reise>(this.apiURL + '/reisen/' + id )
   }
 
   getReiseTotal(): Observable<number> {
     return this.http.get<number>(this.apiURL + '/reisen/v1')
   }
 
+  getTripByDestination(destination:String){
+    return this.http.get<Reise[]>(this.apiURL + '/reisen/ort/' + destination)
+  }
+
   newTrip(reiseDetails: Reise): Observable<Reisen> {
-    return this.http.post<Reisen>(this.apiURL + '/reisen',  reiseDetails, this.httpOptions)
+    return this.http.post<Reisen>(this.apiURL + '/reisen',  reiseDetails,  this.httpOptions)
       .pipe(
         catchError(this.handleError)
       );
@@ -51,8 +60,8 @@ export class HttpClientService {
   }
 
 
-  deleteEmployee(nr) {
-    return this.http.delete<Reisen>(this.apiURL + '/reisen/' + nr, this.httpOptions)
+  deleteTrip(id): Observable<Reisen> {
+    return this.http.delete<Reisen>(this.apiURL + '/reisen/' + id, this.httpOptions)
       .pipe(
         retry(1),
         catchError(this.handleError)
@@ -64,8 +73,8 @@ export class HttpClientService {
     return this.http.get<number>(this.apiURL + '/reisen/v2')
   }
 
-  getDestination(): Observable<string> {
-    return this.http.get<string>(this.apiURL + '/reisen/destinations')
+  getDestination(): Observable<Destination[]> {
+    return this.http.get<Destination[]>(this.apiURL + '/reisen/destinations')
       .pipe(
         catchError(this.handleError)
       );
