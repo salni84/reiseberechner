@@ -14,15 +14,24 @@
       <li class="list-group-item">Total Reisekosten
         <p>{{getSum()}} CHF </p>
       </li>
-      <li class="list-group-item">Kostenverhältnis zum GA
+     <li class="list-group-item">Kostenverhältnis zum GA
         <p>{{gaRelation()}} % </p></li>
       <li class="list-group-item">Reiseziel-Filter <br>
         <label>
           <select [(ngModel)]="filteredDestination" (change)="getDestinationFiltered(filteredDestination)">
-            <option ngModel="" *ngFor="let ziel of zielort" [ngValue]="ziel.zielort">{{ziel.zielort}}</option>
+            <option *ngFor="let ziel of zielort" [ngValue]="ziel.zielort">{{ziel.zielort}}</option>
           </select>
         </label>
       </li>
+     <li class="list-group-item">Monats-Filter <br>
+        <label>
+          <select [(ngModel)]="filteredDestination" (change)="getMonth(filteredDestination)">
+            <option *ngFor="let monat of months" [ngValue]="monat">{{monat}}</option>
+          </select>
+        </label>
+      </li>
+
+
       <li class="list-group-item">
         <button (click)="deleteFilter()">Lösche Filter</button>
       </li>

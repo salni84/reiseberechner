@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
+import java.sql.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -48,6 +49,10 @@ class ReiseController {
         return destinationRepository.findAll();
     }
 
+    @GetMapping("/reisen/monat/{monat}")
+    public List<Reise> getTripsPerMonth(@PathVariable String monat){
+        return reiseservice.findByDatum(monat);
+    }
 
     @GetMapping("/reisen/ort/{ort}")
     public List<Reise> findByDestination(@PathVariable String ort){

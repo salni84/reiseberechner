@@ -71,4 +71,8 @@ export class HttpClientService {
         catchError(this.handleError)
       );
   }
+
+  getMonth(monat:any){
+    return this.http.get<Reise[]>(this.apiURL + '/reisen/monat/' + monat)
+  }
 }

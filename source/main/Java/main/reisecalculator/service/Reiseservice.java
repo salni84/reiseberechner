@@ -4,6 +4,7 @@ import main.reisecalculator.model.Reise;
 import main.reisecalculator.repository.ReiseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -31,7 +32,58 @@ public class Reiseservice {
       return reiseRepository.findById(id);
 }
 
-   public List<Reise> findByDestination (String destination){
+     public List<Reise> findByDestination (String destination){
        return reiseRepository.findByDestination(destination);
+    }
+
+    public List<Reise> findByDatum (String monat){
+        return reiseRepository.findByMonth(showMonth(monat));
+    }
+
+
+
+    public static String showMonth (String month){
+        String returnMonth = "-00-";
+        switch (month){
+            case "Januar":
+                returnMonth = "-01-";
+                break;
+            case "Februar":
+                returnMonth = "-02-";
+                break;
+            case "März":
+                returnMonth = "-03-";
+                break;
+            case "April":
+                returnMonth = "-04-";
+                break;
+            case "Mai":
+                returnMonth = "-05-";
+                break;
+            case "Juni":
+                returnMonth = "-06-";
+                break;
+            case "Juli":
+                returnMonth = "-07-";
+                break;
+            case "August":
+                returnMonth = "-08-";
+                break;
+            case "September":
+                returnMonth = "-09-";
+                break;
+            case "Oktober":
+                returnMonth = "-10-";
+                break;
+            case "November":
+                returnMonth = "-11-";
+                break;
+            case "Dezember":
+                returnMonth = "-12-";
+                break;
+            default:
+                break;
+        }
+        return returnMonth;
     }
 }

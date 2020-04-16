@@ -26,7 +26,7 @@ import {Destination} from "../Destination";
 
   zielort: Destination[];
 
-  months: String[] = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'];
+  months: any[] = ["Januar", "Februar", "März", "April", 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'];
 
   filteredString = "";
 
@@ -38,7 +38,7 @@ import {Destination} from "../Destination";
   constructor(private httpClientService:HttpClientService) {}
 
   ngOnInit() {
-    this.httpClientService.getTrip().subscribe(response =>this.reisen = response);
+    this.httpClientService.getTrip().subscribe(response =>this.handleSuccessfulResponse(response));
     this.httpClientService.getDestination().subscribe(res => this.zielort = res);
   }
 
@@ -101,4 +101,9 @@ import {Destination} from "../Destination";
    this.gaVerh = (this.getSum()*100/this.gaPreis)-100;
    return this.gaVerh.toFixed(2)
   }
+
+  getMonth(monat:any){
+    this.httpClientService.getMonth(monat).subscribe(data => this.reisen = data)
+  }
+
 }
