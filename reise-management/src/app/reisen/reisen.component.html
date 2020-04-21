@@ -15,7 +15,12 @@
         <p>{{getSum()}} CHF </p>
       </li>
      <li class="list-group-item">Kostenverhältnis zum GA
-        <p>{{gaRelation()}} % </p></li>
+        <p>{{gaRelation()}} % </p>
+     </li>
+      <li class="list-group-item">
+    <app-traffic-light [gaVerh]="gaVerh"></app-traffic-light>
+      </li>
+
       <li class="list-group-item">Reiseziel-Filter <br>
         <label>
           <select [(ngModel)]="filteredDestination" (change)="getDestinationFiltered(filteredDestination)">

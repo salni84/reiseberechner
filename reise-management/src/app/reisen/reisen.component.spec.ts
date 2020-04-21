@@ -1,25 +1,41 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {Reise} from "../Reise";
+import {Reisen} from "./reisen.component";
+import {TrafficLightComponent} from "../traffic-light/traffic-light.component";
+import {By} from "protractor";
 
-import { Reise } from './reisen.component';
 
-describe('EmployeeComponent', () => {
-  let component: Reise;
-  let fixture: ComponentFixture<Reise>;
 
-  beforeEach(async(() => {
+describe('ReiseComponent', () => {
+  let fixture;
+  let component;
+  let element;
+  let de;
+
+
+/*  beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ Reise ]
+      declarations: [ Reisen]
     })
-    .compileComponents();
-  }));
+      .compileComponents();
+  }));*/
+
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(Reise);
+    fixture = TestBed.createComponent(Reisen);
     component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    element = fixture.nativeElement;
+    de = fixture.debugElement;
+});
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+/*  it('should render Swisscom Reisecalculator', async (()=> {
+
+    component.name = 'Swisscom Reisecalculator';
+    fixture.detectChanges();
+    fixture.whenStable().toString(() => {
+      expect(element.querySelector('h1').innerText).toBe('Swisscom Reisecalculator');
+      expect(de.query(By.css('h1')).nativeElement.innerText).toBe('Swisscom Reisecalculator');
+    });
+  }));*/
+
 });

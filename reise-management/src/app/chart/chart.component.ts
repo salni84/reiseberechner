@@ -1,6 +1,4 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {Reisen} from "../reisen/reisen.component";
-import {HttpClientService} from "../service/http-client.service";
 
 import {
   ApexAxisChartSeries,
@@ -42,7 +40,7 @@ export class ChartComponent implements OnInit {
   gaPreis: number = 5265;
   gaPerMonth: number = Math.round((this.gaPreis/12)*100)/100;
 
-  constructor(private httpService: HttpClientService) {
+  constructor() {
     this.chartOptions = {
       series: [
         {

@@ -12,15 +12,18 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "~8.2.14",
+    "@angular/cdk": "^9.2.1",
     "@angular/common": "~8.2.14",
     "@angular/compiler": "~8.2.14",
-    "@swisscom/sdx": "^1.32.0",
     "@angular/core": "~8.2.14",
     "@angular/forms": "~8.2.14",
+    "@angular/material": "^9.2.1",
     "@angular/platform-browser": "~8.2.14",
     "@angular/platform-browser-dynamic": "~8.2.14",
     "@angular/router": "~8.2.14",
     "@ng-bootstrap/ng-bootstrap": "^5.0.2",
+    "@swisscom/sdx": "^1.32.0",
+    "angular-material-source": "github:angular/material",
     "apexcharts": "^3.16.1",
     "bootstrap": "^3.4.1",
     "chartjs-plugin-datalabels": "^0.7.0",
@@ -30,6 +33,7 @@
     "rxjs": "~6.4.0",
     "sdxcode": "^1.32.0",
     "tslib": "^1.10.0",
+    "webdriver-manager": "^12.1.7",
     "zone.js": "~0.9.1"
   },
   "devDependencies": {

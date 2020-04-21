@@ -11,6 +11,7 @@ import org.springframework.http.*;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
@@ -43,7 +44,7 @@ public class ReiseControllerTestREST {
         HttpEntity<Reise> request = new HttpEntity<>(r2);
         ResponseEntity<Reise> response = testRestTemplate.postForEntity("http://localhost:8080/reisen/", request,  Reise.class);
         Assert.assertEquals(200, response.getStatusCodeValue());
-        int id = response.getBody().getId();
+        int id = Objects.requireNonNull(response.getBody()).getId();
         testRestTemplate.delete("http://localhost:8080/reisen/" + id);
         response = testRestTemplate.getForEntity("http://localhost:8080/reisen/" + id, Reise.class);
         assertThat(response.getBody(), is(nullValue()));

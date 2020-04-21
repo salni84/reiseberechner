@@ -11,6 +11,7 @@ import { SbbPageComponent } from './sbb-page/sbb-page.component';
 import { AppRoutingModule } from "./app-routing.module";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import { TrafficLightComponent } from './traffic-light/traffic-light.component';
 
 
 
@@ -21,6 +22,7 @@ import { NgbModule} from "@ng-bootstrap/ng-bootstrap";
     ChartComponent,
     NavbarComponent,
     SbbPageComponent,
+    TrafficLightComponent,
 
   ],
   imports: [

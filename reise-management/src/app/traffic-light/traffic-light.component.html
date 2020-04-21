@@ -1,0 +1,6 @@
+<div id="box">
+  <div class="light red" [ngClass]="{'checked': lights.isRed}">{{checkTrafficLight()}}</div>
+  <div class="light yellow" [ngClass]="{'checked': lights.isYellow}">{{checkTrafficLight()}}</div>
+  <div class="light green" [ngClass]="{'checked': lights.isGreen}">{{checkTrafficLight()}}</div>
+</div>
+<p>{{message}}</p>

@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import { HttpClientService } from '../service/http-client.service';
+import {AfterViewInit, Component, Input, OnInit, ViewChild} from '@angular/core';
+import {HttpClientService } from '../service/http-client.service';
 import {Reise} from "../Reise";
 import {Destination} from "../Destination";
 
@@ -18,22 +18,14 @@ import {Destination} from "../Destination";
   reisen: Reise[];
 
   gaPreis = 5265;
+
   gaVerh = 0;
-
-  sumOfCost: number;
-
-  gaRelations: number;
 
   zielort: Destination[];
 
   months: any[] = ["Januar", "Februar", "März", "April", 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'];
 
-  filteredString = "";
-
-  filtered;
-
   filteredDestination;
-
 
   constructor(private httpClientService:HttpClientService) {}
 
@@ -41,11 +33,6 @@ import {Destination} from "../Destination";
     this.httpClientService.getTrip().subscribe(response =>this.handleSuccessfulResponse(response));
     this.httpClientService.getDestination().subscribe(res => this.zielort = res);
   }
-
-/*  ngDoCheck(){
-    this.getSelectedDropdown()
-  }*/
-
 
   getSingleTrip(){
     this.httpClientService.getTripById(this.reiseDetails.id).subscribe(reiseDetails =>
@@ -76,18 +63,6 @@ import {Destination} from "../Destination";
     }
   }
 
-/*  getSelectedDropdown(){
-    this.filtered = this.reisen.filter((reisen) => this.isMatch(reisen));
-  }
-
-  private isMatch(item) {
-    if(item instanceof Object){
-      return Object.keys(item).some((k) => this.isMatch(item[k]));
-    }else {
-      return item.toString().indexOf(this.filteredString) > -1;
-    }
-  }*/
-
   getSum() {
     return this.reisen.map(t => t.preis).reduce((a, b) => a + b, 0);
   }
@@ -105,5 +80,4 @@ import {Destination} from "../Destination";
   getMonth(monat:any){
     this.httpClientService.getMonth(monat).subscribe(data => this.reisen = data)
   }
-
 }
